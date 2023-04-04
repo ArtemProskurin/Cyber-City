@@ -53,29 +53,31 @@ public class Player : MonoBehaviour
         Shoot();
 
 
-        var dist = (transform.position - Camera.main.transform.position).z;
+        //var dist = (transform.position - Camera.main.transform.position).z;
 
-        var leftBorder = Camera.main.ViewportToWorldPoint(
-            new Vector3(0, 0, dist)
-        ).x;
+        //var leftBorder = Camera.main.ViewportToWorldPoint(
+        //    new Vector3(0, 0, dist)
+        //).x;
 
-        var rightBorder = Camera.main.ViewportToWorldPoint(
-            new Vector3(1, 0, dist)
-        ).x;
+        //var rightBorder = Camera.main.ViewportToWorldPoint(
+        //    new Vector3(1, 0, dist)
+        //).x;
 
-        var topBorder = Camera.main.ViewportToWorldPoint(
-            new Vector3(0, 0, dist)
-        ).y;
+        //var topBorder = Camera.main.ViewportToWorldPoint(
+        //    new Vector3(0, 0, dist)
+        //).y;
 
-        var bottomBorder = Camera.main.ViewportToWorldPoint(
-            new Vector3(0, 1, dist)
-        ).y;
+        //var bottomBorder = Camera.main.ViewportToWorldPoint(
+        //    new Vector3(0, 1, dist)
+        //).y;
 
-        transform.position = new Vector3(
-            Mathf.Clamp(transform.position.x, leftBorder, rightBorder),
-            Mathf.Clamp(transform.position.y, topBorder, bottomBorder),
-            transform.position.z
-        );
+        //transform.position = new Vector3(
+        //    Mathf.Clamp(transform.position.x, leftBorder, rightBorder),
+        //    Mathf.Clamp(transform.position.y, topBorder, bottomBorder),
+        //    transform.position.z
+        //);
+
+        
 
     }
 
@@ -125,9 +127,10 @@ public class Player : MonoBehaviour
     private void Flip()
     {
         turning = !turning;
-        Vector3 Scaler = transform.localScale;
-        Scaler.x *= -1;
-        transform.localScale = Scaler;
+        transform.Rotate(0f, 180f, 0f);
+        //Vector3 Scaler = transform.localScale;
+        //Scaler.x *= -1;
+        //transform.localScale = Scaler;
     }
 
 

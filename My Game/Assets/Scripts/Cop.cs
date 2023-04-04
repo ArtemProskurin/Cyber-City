@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Patrol : MonoBehaviour
+public class Cop : MonoBehaviour
 {
 
     public float speed;
@@ -26,14 +26,14 @@ public class Patrol : MonoBehaviour
 
         anim.SetTrigger("run");
 
-        if (groundInfo.collider == false) 
+        if (groundInfo.collider == false)
         {
             if (moovingRight == true)
             {
                 transform.eulerAngles = new Vector3(0, -180, 0);
                 moovingRight = false;
             }
-            else 
+            else
             {
                 transform.eulerAngles = new Vector3(0, 0, 0);
                 moovingRight = true;
