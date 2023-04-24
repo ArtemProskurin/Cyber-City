@@ -1,32 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
-{
-
-    public Transform firePoint;
+public class Weapon : MonoBehaviour {
     public GameObject bullet;
-    private Animator anim;
+    public Transform firePoint;
+    // public Transform shotPrefab;
+    public float shootingRate = 0.25f;
+    private float shootCooldown;
+    
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        anim = GetComponent<Animator>();
+    
+    void Start() {
+        shootCooldown = 0f;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetButtonDown("Fire1")) 
-        {
-            Shoot();
-            anim.SetTrigger("shoot");
+    
+    void Update() {
+        if (shootCooldown > 0) {
+            shootCooldown -= Time.deltaTime;
+        }
+        
+    }
+
+    public void Attack(bool isEnemy) {
+        if (CanAttack) {
+            shootCooldown = shootingRate;
+            var shotTransform = Instantiate(bullet, firePoint.position, firePoint.rotation);
+            Shot shot = shotTransform.gameObject.GetComponent<Shot>();
+            if (shot != null) {
+                shot.isEnemyShot = isEnemy;
+            }
         }
     }
 
-    void Shoot() 
-    {
-        Instantiate(bullet, firePoint.position, firePoint.rotation);
+    public bool CanAttack {
+        get {
+            return shootCooldown <= 0f;
+        }
     }
 }

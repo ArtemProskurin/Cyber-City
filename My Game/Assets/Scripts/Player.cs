@@ -20,7 +20,6 @@ public class Player : MonoBehaviour
     private int extraJump;
     public int extraJumpValue;
 
-    int count;
 
     // Start is called before the first frame update
     void Start()
@@ -50,35 +49,17 @@ public class Player : MonoBehaviour
 
         Jump();
 
-        Shoot();
-
-
-        //var dist = (transform.position - Camera.main.transform.position).z;
-
-        //var leftBorder = Camera.main.ViewportToWorldPoint(
-        //    new Vector3(0, 0, dist)
-        //).x;
-
-        //var rightBorder = Camera.main.ViewportToWorldPoint(
-        //    new Vector3(1, 0, dist)
-        //).x;
-
-        //var topBorder = Camera.main.ViewportToWorldPoint(
-        //    new Vector3(0, 0, dist)
-        //).y;
-
-        //var bottomBorder = Camera.main.ViewportToWorldPoint(
-        //    new Vector3(0, 1, dist)
-        //).y;
-
-        //transform.position = new Vector3(
-        //    Mathf.Clamp(transform.position.x, leftBorder, rightBorder),
-        //    Mathf.Clamp(transform.position.y, topBorder, bottomBorder),
-        //    transform.position.z
-        //);
-
+       
+        bool shoot = Input.GetButtonDown("Fire1");
+        shoot |= Input.GetButtonDown("Fire2");
+        if (shoot) {
+            Weapon weapon = GetComponent<Weapon>();
+            if (weapon != null) {
+                weapon.Attack(false);
+               
+            }
+        }
         
-
     }
 
     private void Run() 
@@ -113,25 +94,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Shoot() 
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            anim.SetTrigger("shoot");
-        }
-        else {
-            anim.SetBool("idle", true);
-        }
-    }
+
+
+    
 
     private void Flip()
     {
         turning = !turning;
         transform.Rotate(0f, 180f, 0f);
-        //Vector3 Scaler = transform.localScale;
-        //Scaler.x *= -1;
-        //transform.localScale = Scaler;
     }
-
-
 }

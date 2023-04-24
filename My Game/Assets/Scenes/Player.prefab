@@ -9,12 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5023009343331066366}
-  - component: {fileID: 5023009343331066365}
   - component: {fileID: 5023009343331066364}
   - component: {fileID: 5023009343331066363}
   - component: {fileID: 5023009343331066362}
   - component: {fileID: 8556191257380796290}
-  - component: {fileID: 1242923342133136132}
+  - component: {fileID: 3853627662738696163}
+  - component: {fileID: 2368299092784512667}
+  - component: {fileID: 1885361009291253988}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -37,27 +38,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5023009343331066365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5023009343331066361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fccd5c3351615864b81e3094d5f4112c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 6
-  jumpForce: 6
-  turning: 1
-  groundCheck: {fileID: 0}
-  checkRadius: 0.1
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 8
-  extraJumpValue: 12
 --- !u!50 &5023009343331066364
 Rigidbody2D:
   serializedVersion: 4
@@ -92,7 +72,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.015362337, y: -0.103871584}
+  m_Offset: {x: 0.015362337, y: -0.08748312}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -103,7 +83,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.31250724, y: 0.47371757}
+  m_Size: {x: 0.31250724, y: 0.5064945}
   m_EdgeRadius: 0
 --- !u!212 &5023009343331066362
 SpriteRenderer:
@@ -177,7 +157,28 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &1242923342133136132
+--- !u!114 &3853627662738696163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5023009343331066361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fccd5c3351615864b81e3094d5f4112c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 6
+  jumpForce: 6
+  turning: 1
+  groundCheck: {fileID: 0}
+  checkRadius: 0.1
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 8
+  extraJumpValue: 1
+--- !u!114 &2368299092784512667
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,5 +190,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 097716e10eb171843bcd3f44b1eedd11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 0}
   bullet: {fileID: 634240837971452777, guid: b4792b1545106074fa43f9c88c3c6614, type: 3}
+  firePoint: {fileID: 0}
+  shootingRate: 0.25
+--- !u!114 &1885361009291253988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5023009343331066361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ed28cbff5caf148ba4b27e10fe28eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 2
+  isEnemy: 1
