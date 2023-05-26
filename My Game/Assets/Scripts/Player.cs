@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -55,11 +56,11 @@ public class Player : MonoBehaviour
         if (shoot) {
             Weapon weapon = GetComponent<Weapon>();
             if (weapon != null) {
+                anim.SetTrigger("shoot");
                 weapon.Attack(false);
-               
+                //SoundEffectsHelper.Instance.MakePlayerShotSound();
             }
         }
-        
     }
 
     private void Run() 
@@ -94,7 +95,9 @@ public class Player : MonoBehaviour
         }
     }
 
-
+    void OnDestroy() {
+       SceneManager.LoadScene("GameOver");
+    }
 
     
 

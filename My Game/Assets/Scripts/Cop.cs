@@ -38,9 +38,19 @@ public class Cop : MonoBehaviour
         playerInfo = Physics2D.Raycast(checkPlayer.position, checkPlayer.right, hitDistance);
         
 
-        if (!playerInfo)
+        if (playerInfo && (playerInfo.transform.name == "Player"))
         {
-
+            Weapon weapon = GetComponent<Weapon>();
+            
+                anim.SetBool("run", false);
+                if (weapon != null)
+                {
+                    weapon.Attack(false);
+                    SoundEffectsHelper.Instance.MakeEnemyShotSound();
+                } 
+        }
+       else 
+        {
             if (groundHit.collider != false)
             {
                 anim.SetBool("run", true);
@@ -58,21 +68,6 @@ public class Cop : MonoBehaviour
                 isFacingRight = !isFacingRight;
                 transform.Rotate(0f, 180f, 0f);
             }
-
-            //lineRenderer.SetPosition(0, checkPlayer.position);
-            //lineRenderer.SetPosition(1, checkPlayer.position + checkPlayer.right * hitDistance);
-        }
-       else 
-        {
-            /*lineRenderer.SetPosition(0, firePoint.position);
-            lineRenderer.SetPosition(1, hitInfo.point);*/
-            Weapon weapon = GetComponent<Weapon>();
-            
-                anim.SetBool("run", false);
-                if (weapon != null)
-                {
-                    weapon.Attack(false);
-                }  
         }
     }
 }

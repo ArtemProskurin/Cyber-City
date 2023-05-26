@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour {
-    public int hp = 1;
+    
+    public float hp = 1f;
     public bool isEnemy = true;
 
-    public void Damage(int damageCount) {
+
+    public void Damage(float damageCount) {
         hp -= damageCount;
         
         if (hp <= 0) {
-            
+            SpecialEffectsHelper.Instance.Explosion(transform.position);
             Destroy(gameObject);
         }
     }
